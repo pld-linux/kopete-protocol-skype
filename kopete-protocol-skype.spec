@@ -15,7 +15,9 @@ Patch0:		kde-ac260-lt.patch
 Patch1:		kopete_skype-ac.patch
 URL:		http://websvn.kde.org/trunk/extragear/addons/kopete_skype/
 BuildRequires:	automake
-BuildRequires:	dbus-devel < 0.62
+# https://developer.skype.com/Docs/ApiDoc/Using_the_Skype_API_on_Linux
+BuildRequires:	dbus-devel <= 0.23
+BuildRequires:
 BuildRequires:	kdelibs-devel
 BuildRequires:	kdenetwork-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -34,12 +36,12 @@ touch INSTALL NEWS ChangeLog
 cp /usr/share/automake/config.sub admin
 %{__make} -f admin/Makefile.common cvs
 %configure
-%{__make}
+%{__make} -C src
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__make} -C src install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 %clean
