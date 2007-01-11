@@ -15,6 +15,7 @@ Patch0:		kde-common-PLD.patch
 Patch1:		kde-ac260-lt.patch
 Patch2:		kopete_skype-ac.patch
 Patch3:		kopete_skype-srcdir.patch
+Patch4:		kopete_skype-amd64.patch
 URL:		http://websvn.kde.org/trunk/extragear/addons/kopete_skype/
 BuildRequires:	automake
 # https://developer.skype.com/Docs/ApiDoc/Using_the_Skype_API_on_Linux
@@ -32,14 +33,20 @@ This adds Skype protocol support to Kopete.
 %patch1 -p1
 %patch2 -p1
 %patch3 -p1
+%patch4 -p1
 
 touch INSTALL NEWS ChangeLog
 
 %build
 cp /usr/share/automake/config.sub admin
 %{__make} -f admin/Makefile.common cvs
-%configure
-%{__make} -C src
+%configure \
+%if "%{_lib}" == "lib64"
+	--enable-libsuffix=64 \
+%endif
+	--%{?debug:en}%{!?debug:dis}able-debug%{?debug:=full} \
+	--with-qt-libraries=%{_libdir}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
