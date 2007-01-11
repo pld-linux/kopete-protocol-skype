@@ -15,7 +15,7 @@ Patch0:		kde-ac260-lt.patch
 Patch1:		kopete_skype-ac.patch
 URL:		http://websvn.kde.org/trunk/extragear/addons/kopete_skype/
 BuildRequires:	automake
-BuildRequires:	dbus-devel
+BuildRequires:	dbus-devel < 0.62
 BuildRequires:	kdelibs-devel
 BuildRequires:	kdenetwork-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
