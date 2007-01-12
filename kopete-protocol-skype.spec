@@ -3,7 +3,8 @@
 # svn co svn://anonsvn.kde.org/home/kde/trunk/extragear/addons/kopete_skype
 # cd kopete_skype
 # svn co svn://anonsvn.kde.org/home/kde/branches/KDE/3.5/kde-common/admin
-Summary:	Multi-protocol plugin-based instant messenger
+Summary:	Kopete plugin with Skype protocol support
+Summary(pl):	Wtyczka Kopete obs³uguj±ca protokó³ Skype
 Name:		kopete-protocol-skype
 Version:	svn
 Release:	0.1
@@ -26,6 +27,9 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This adds Skype protocol support to Kopete.
+
+%description -l pl
+Ta wtyczka dodaje do Kopete obs³ugê protoko³u Skype.
 
 %prep
 %setup -q -n kopete_skype
@@ -61,7 +65,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %{_libdir}/kde3/kopete_skype.la
-%{_libdir}/kde3/kopete_skype.so
+%attr(755,root,root) %{_libdir}/kde3/kopete_skype.so
 %{_datadir}/apps/kopete/icons/*/*/apps/skype_protocol.png
 %{_datadir}/apps/kopete/icons/*/*/actions/call.png
 %{_datadir}/apps/kopete/icons/*/*/actions/contact_ffc_overlay.png
