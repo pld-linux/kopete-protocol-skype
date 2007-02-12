@@ -4,7 +4,7 @@
 # cd kopete_skype
 # svn co svn://anonsvn.kde.org/home/kde/branches/KDE/3.5/kde-common/admin
 Summary:	Kopete plugin with Skype protocol support
-Summary(pl.UTF-8):   Wtyczka Kopete obsługująca protokół Skype
+Summary(pl.UTF-8):	Wtyczka Kopete obsługująca protokół Skype
 Name:		kopete-protocol-skype
 Version:	svn
 Release:	0.1
